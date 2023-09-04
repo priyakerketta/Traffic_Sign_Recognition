@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} Traffic Agent: Show Prediction {% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row mt-5 justify-content-center">
+        {% for image, details in predictions.items() %}
+            <div class="card custom-bg-color card-custom mx-2 mb-3">
+                <img src="{{ folder+'/'+image }}" class="card-img-top mx-auto img-fluid" alt="Crop Image: {{ image }}" style="padding-top: 12px; max-height:250px; object-fit: cover;" width='100px' height='100px'>
+                <div class="card-body">
+                    <p class="card-text"><strong>Predicted signal:</strong><br>{{ details["prediction"] }}</p>
+                    
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="container text-center">
+        <a href="/" class="btn btn-light btn-lg">Return to Home Page</a>
+        <p class="pt-2">Note: Your Uploaded Images automatically get deleted after 1 hour.</p>
+    </div>
+{% endblock %}
